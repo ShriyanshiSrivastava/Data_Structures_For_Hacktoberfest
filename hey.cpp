@@ -1,6 +1,8 @@
 #include<iostream>
+
 #include<conio.h>
 #include<windows.h>
+
 using namespace std;
 
 void gotoxy(short x, short y)           //definition of gotoxy function//
