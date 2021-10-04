@@ -1,37 +1,34 @@
-//Rotate the array to the left (counter-clockwise direction) by D steps, where D is a positive integer.#include <iostream>
+//Rotate the array to the left (counter-clockwise direction) by D steps, where D is a positive integer.
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-int equilibriumPoint(long long a[], int n) {
-        int sum = 0;
-        int leftsum = 0;
-        for (int i = 0; i < n; ++i)
-            sum += a[i];
+void rotateArr(int a[], int d, int n){
 
-        for (int i = 0; i < n; ++i)
-        {
-            sum -= a[i];
+        //First reversing d elements from starting index.
+        reverse(a, a+d);
+        //Then reversing the last n-d elements.
+        reverse(a+d, a+n);
+        //Finally, reversing the whole array.
+        reverse(a, a+n);
 
-            if (leftsum == sum)
-                return i+1;
-
-            leftsum += a[i];
-        }
-        return -1;
     }
-
 int main(){
-    long long int n,d;
+    int n,d;
     cout<<"Enter size of array: ";
     cin>>n;
-    long long int a[n];
+    int a[n];
     cout<<"Enter the array elements: ";
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
-
-    cout<<"\nIndex of Equilibrium Point: "<<equilibriumPoint(a,n);
-
+    cout<<"Enter the number by which you want to rotate the array in counter-clockwise direction: ";
+    cin>>d;
+    rotateArr(a,d,n);
+    cout<<"\nRotated Array: ";
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
 
     return 0;
 }
