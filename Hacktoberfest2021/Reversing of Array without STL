@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+struct Arrays
+{
+    int A[20];
+    int size;
+    int length;
+};
+
+void Display(struct Arrays ray);
+void Reverse(struct Arrays * ray);
+int main()
+{
+    struct Arrays ray={{10,20,40,50,60},20,5}; 
+    Display(ray);
+    cout<<endl<<"-------------------"<<endl;
+ 
+    Reverse(&ray);
+    Display(ray);
+    cout<<endl<<"-------------------"<<endl;
+    return 0;
+}
+
+void Display(struct Arrays ray)
+{
+    cout<<"DISPLAY: "<<endl;
+    for(int i=0;i<ray.length;i++)
+    {
+        cout<<ray.A[i]<<" ";
+    }
+}
+
+void Reverse(struct Arrays * ray)
+{
+    int i;
+    int j;
+    int temp;
+
+    for(i=0,j=ray->length-1;i<j;i++,j--)
+    {
+      temp=ray->A[i];
+      ray->A[i]=ray->A[j];
+      ray->A[j]=temp;
+    }
+}
