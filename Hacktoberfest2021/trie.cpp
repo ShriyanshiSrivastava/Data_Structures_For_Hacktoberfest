@@ -1,12 +1,16 @@
+// C++ implementation of search and insert
+// operations on Trie
 #include <bits/stdc++.h>
 using namespace std;
 
 class Node
 {
 public:
+    // isTerminal is true if the node represents
+    // end of a word
     bool isTerminal;
     Node *child[26];
-
+    // trie node
     Node()
     {
         isTerminal = false;
@@ -17,6 +21,9 @@ public:
     }
 };
 
+// If not present, add key into trie
+// If the key is prefix of trie node, just
+// marks leaf node
 void add(string word, Node *trie)
 {
     int n = word.size();
@@ -28,9 +35,12 @@ void add(string word, Node *trie)
         }
         trie = trie->child[word[i] - 'A'];
     }
+    // mark last node as leaf
     trie->isTerminal = true;
 }
 
+// Returns true if key presents in trie, else
+// false
 bool search(string word, Node *trie)
 {
     int n = word.size();
@@ -56,11 +66,13 @@ int main()
     dict.push_back("NOT");
 
     Node *root = new Node();
+    // Construct trie
     for (int i = 0; i < dict.size(); i++)
     {
         add(dict[i], root);
     }
 
+    // Search for different keys
     cout << search("ARE", root) << endl;
     cout << search("NO", root) << endl;
     cout << search("NEWS", root) << endl;
