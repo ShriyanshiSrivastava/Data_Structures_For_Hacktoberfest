@@ -27,6 +27,7 @@ public:
 void add(string word, Node *trie)
 {
     int n = word.size();
+    //Every character of the input key is inserted as an individual Trie node.
     for (int i = 0; i < n; i++)
     {
         if (trie->child[word[i] - 'A'] == NULL)
@@ -44,17 +45,22 @@ void add(string word, Node *trie)
 bool search(string word, Node *trie)
 {
     int n = word.size();
+    //we only compare the characters and move down
     for (int i = 0; i < n; i++)
     {
         if (trie->child[word[i] - 'A'] == NULL)
             return false;
         trie = trie->child[word[i] - 'A'];
     }
+    // if isTerminal field of the last node is true, then the key exists in the trie. 
+    // If search terminates without examining all the characters of the key, 
+    // then key is not present in the trie.
     return trie->isTerminal;
 }
 
 int main()
 {
+    // Input keys
     vector<string> dict;
     dict.push_back("ARE");
     dict.push_back("AS");
