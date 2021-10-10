@@ -37,6 +37,8 @@ Sample Output 2:
 1 2 3 4 5 6 7
 3 4 1 2
 */
+// Code
+// Swap function 
 void swapElements(int *input, int i, int j) {
     int temp = input[i];
     input[i] = input[j];
@@ -45,11 +47,13 @@ void swapElements(int *input, int i, int j) {
 void reverse(int *input, int start, int end) { 
     int i = start, j = end;
     while(i < j) {
+	    // Here calling the swap function to swap the elements
         swapElements(input, i, j);
         i++;
         j--;
     }
 }
+// Basic function called from main to rotate
 void rotate(int *input, int d, int n) {
     if(d >= n && n != 0) { 
         d = d % n;
@@ -57,6 +61,7 @@ void rotate(int *input, int d, int n) {
     else if (n == 0) {
         return;
     }
+// calling reverse function to reverse the array by d elements 
     reverse(input, 0, n - 1);
     reverse(input, 0, n - d - 1);
     reverse(input, n - d, n - 1);
@@ -77,7 +82,7 @@ int main()
 		cin >> size;
 
 		int *input = new int[size];
-
+		//input elements in the array
 		for (int i = 0; i < size; ++i)
 		{
 			cin >> input[i];
@@ -85,14 +90,14 @@ int main()
 
 		int d;
 		cin >> d;
-
+		//Calling rotate function
 		rotate(input, d, size);
-
+		// array after rotation
 		for (int i = 0; i < size; ++i)
 		{
 			cout << input[i] << " ";
 		}
-		
+		//deallocating the memory
 		delete[] input;
 		cout << endl;
 	}
