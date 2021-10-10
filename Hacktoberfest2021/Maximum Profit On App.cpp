@@ -26,20 +26,23 @@ Sample Output 2 :
 Sample Output 2 Explanation :
 Price of your app should be Rs. 67. You can get the profit Rs. 201 (i.e. 3 * 67).
 */
+//Code
+
 #include<bits/stdc++.h>
 int maximumProfit(int budget[], int n) {
     // Write your code here
+    //First sort the array using stl function
      sort(budget , budget+n);
 
     int temp[n];
 
     for(int i=0;i<n;i++)
     {
-        temp[i]=budget[i]*(n-i);
+        temp[i]=budget[i]*(n-i);   //adding profit in temporary array
     }
-     sort(temp,temp +n);
+     sort(temp,temp +n);      //Sorting Temporary array
 
-    return temp[n-1];
+    return temp[n-1];      // Returning maximum Profit
 
 }
 #include <iostream>
@@ -51,8 +54,8 @@ int main() {
     cin>>n;
     input = new int[n];
     for(i = 0;i < n;i++)
-        cin>>input[i];
+        cin>>input[i];      // input elements
 
-    cout << maximumProfit(input, n) << endl;
+    cout << maximumProfit(input, n) << endl;  // Calling maximumProfit function and printing maximu profit
 
 }
